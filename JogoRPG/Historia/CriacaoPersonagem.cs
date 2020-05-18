@@ -8,7 +8,7 @@ namespace JogoRPG.Historia
     {
         public static void Comecar()
         {
-            Escrever("Bem vindo aventureiro, vamos começar.");
+            Escrever("Bem vindo aventureiro, vamos começar!");
             Escrever("Digite o nome do seu personagem.");
             string nomeDoPersonagem = Console.ReadLine();
 
