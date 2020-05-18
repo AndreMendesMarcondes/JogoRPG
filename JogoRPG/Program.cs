@@ -1,4 +1,5 @@
 ﻿using JogoRPG.Historia;
+using JogoRPG.Models.Monstros;
 using System;
 using static JogoRPG.Models.Personagem;
 
@@ -8,8 +9,10 @@ namespace JogoRPG
     {
         static void Main(string[] args)
         {
-            CriacaoPersonagem.Comecar();
 
+            Monstro meuMonstro = new Monstro(Monstro.Raca.Orc);
+          
+            meuMonstro.ToString();
             Console.ReadKey();            
         }
 
