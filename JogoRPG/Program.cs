@@ -10,7 +10,7 @@ namespace JogoRPG
         static void Main(string[] args)
         {
 
-            Monstro meuMonstro = new Monstro(Monstro.Raca.Orc);
+            Monstro meuMonstro = new Monstro(Monstro.Raca.Dragao);
           
             meuMonstro.ToString();
             Console.ReadKey();            
