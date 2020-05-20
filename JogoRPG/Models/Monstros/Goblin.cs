@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JogoRPG.Models.Monstros
+﻿namespace JogoRPG.Models.Monstros
 {
     public static class Globlin
     {
         public static int Vida()
         {
-            return Dado.Jogar(15);
+            return Dado.Rolar(15);
         }
         public static int Ataque()
         {
-            return Dado.Jogar(8);
+            return Dado.Rolar(8);
         }
         public static int Defesa()
         {
-            return Dado.Jogar(10);
+            return Dado.Rolar(10);
         }
     }
 }

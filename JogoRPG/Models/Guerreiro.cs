@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace JogoRPG.Models
+﻿namespace JogoRPG.Models
 {
     public static class Guerreiro
     {
@@ -19,12 +17,12 @@ namespace JogoRPG.Models
 
         private static int RolarDadoGuerreiro(int numeroDeLadosDado)
         {
-            int valorDoDadoJogado = Dado.Jogar(numeroDeLadosDado);
+            int valorDoDadoJogado = Dado.Rolar(numeroDeLadosDado);
 
-            if(valorDoDadoJogado * 100 / numeroDeLadosDado > 70)
+            if (valorDoDadoJogado * 100 / numeroDeLadosDado > 70)
             {
                 return valorDoDadoJogado;
-            } 
+            }
 
             return RolarDadoGuerreiro(numeroDeLadosDado);
         }

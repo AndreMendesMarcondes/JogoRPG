@@ -17,7 +17,7 @@
 
         private static int RolarDadoMago(int numeroDeLadosDado)
         {
-            int valorDoDadoJogado = Dado.Jogar(numeroDeLadosDado);
+            int valorDoDadoJogado = Dado.Rolar(numeroDeLadosDado);
 
             if (valorDoDadoJogado * 100 / numeroDeLadosDado > 70)
             {

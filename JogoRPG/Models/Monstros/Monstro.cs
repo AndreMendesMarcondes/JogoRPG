@@ -1,20 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JogoRPG.Models.Monstros
 {
-    public class Monstro
+    public class Monstro : StatusGerais
     {
-        private string NomeRaca { get; set; }
         public enum Raca { Orc = 1, Slime = 2, Goblin = 3, Troll = 4, Rato = 5, Dragao = 6 };
-        public int Vida { get; private set; }
-        public int Ataque { get; private set; }
-        public int Defesa { get; private set; }
 
-        public Monstro(Raca racaMonstro)
+        private Raca racaMonstro;
+
+        private void SortearMonstro()
         {
-            NomeRaca = racaMonstro.ToString();
+            Random rd = new Random();
+            int numeroAleatorio = rd.Next(1, 7);
+            racaMonstro = (Raca)numeroAleatorio;
+        }
+
+        public Monstro()
+        {
+            SortearMonstro();
+            Nome = racaMonstro.ToString();
             switch (racaMonstro)
             {
                 case Raca.Orc:
@@ -33,6 +37,7 @@ namespace JogoRPG.Models.Monstros
                     MontarDadoRato();
                     break;
                 case Raca.Dragao:
+                    Console.WriteLine("AGORA FUDEU!");
                     MontarDadoDragao();
                     break;
                 default:
@@ -82,19 +87,6 @@ namespace JogoRPG.Models.Monstros
             Vida = Dragao.Vida();
             Defesa = Dragao.Defesa();
             Ataque = Dragao.Ataque();
-        }
-
-        public override string ToString()
-        {
-            string descricaoMonstro = "";
-            descricaoMonstro = descricaoMonstro + "| Raça: " + NomeRaca;
-            descricaoMonstro = descricaoMonstro + "| Vida: " + Vida;
-            descricaoMonstro += "| Ataque: " + Ataque;
-            descricaoMonstro += $@"| Defesa: {Defesa}";
-
-            Console.WriteLine(descricaoMonstro);
-
-            return descricaoMonstro;
-        }
+        }       
     }
 }

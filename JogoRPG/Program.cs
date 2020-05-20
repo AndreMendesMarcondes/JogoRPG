@@ -1,7 +1,6 @@
-﻿using JogoRPG.Historia;
+﻿using JogoRPG.Models;
 using JogoRPG.Models.Monstros;
 using System;
-using static JogoRPG.Models.Personagem;
 
 namespace JogoRPG
 {
@@ -9,16 +8,22 @@ namespace JogoRPG
     {
         static void Main(string[] args)
         {
+            Personagem meuPersonagem = new Personagem("Heimille", Personagem.ClasseJogador.Mago);
+            int numeroMonstros = 0;
+            Monstro meuMonstro = new Monstro();
+            Combate combate = new Combate();
+            var vencedor = combate.Combater(meuPersonagem, meuMonstro);
+            
 
-            Monstro meuMonstro = new Monstro(Monstro.Raca.Dragao);
-          
-            meuMonstro.ToString();
-            Console.ReadKey();            
-        }
+            while (vencedor.GetType() == typeof(Personagem))
+            {
+                numeroMonstros++;
+                meuMonstro = new Monstro();
+                 vencedor = combate.Combater(meuPersonagem, meuMonstro);
+            }
+            Console.WriteLine($"{meuPersonagem.Nome} matou {numeroMonstros} monstros");
 
-        static void Escrever(string mensagem)
-        {
-            Console.WriteLine(mensagem);
+            Console.ReadKey();
         }
     }
 }

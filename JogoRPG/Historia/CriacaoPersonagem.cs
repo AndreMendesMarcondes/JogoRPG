@@ -8,23 +8,18 @@ namespace JogoRPG.Historia
     {
         public static void Comecar()
         {
-            
-            Escrever("Bem vindo aventureiro, vamos começar!");
-            Escrever("Digite o nome do seu personagem.");
+
+            Console.WriteLine("Bem vindo aventureiro, vamos começar!");
+            Console.WriteLine("Digite o nome do seu personagem.");
             string nomeDoPersonagem = Console.ReadLine();
 
-            Escrever("Qual classe você deseja que seu personagem seja: ");
-            Escrever("Pressione 1 para MAGO ou 2 para GUERREIRO.");
-            ClasseJogador classePersonagem = (ClasseJogador)Enum.Parse(typeof(ClasseJogador),Console.ReadLine());
+            Console.WriteLine("Qual classe você deseja que seu personagem seja: ");
+            Console.WriteLine("Pressione 1 para MAGO ou 2 para GUERREIRO.");
+            ClasseJogador classePersonagem = (ClasseJogador)Enum.Parse(typeof(ClasseJogador), Console.ReadLine());
 
             Personagem personagem = new Personagem(nomeDoPersonagem, classePersonagem);
-            Escrever("Seu personagem ficou pronto");
+            Console.WriteLine("Seu personagem ficou pronto");
             personagem.ToString();
-        }
-
-        static void Escrever(string mensagem)
-        {
-            Console.WriteLine(mensagem);
         }
     }
 }
