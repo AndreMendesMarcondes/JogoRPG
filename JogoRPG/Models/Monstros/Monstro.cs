@@ -13,6 +13,21 @@ namespace JogoRPG.Models.Monstros
             Random rd = new Random();
             int numeroAleatorio = rd.Next(1, 7);
             racaMonstro = (Raca)numeroAleatorio;
+            if (numeroAleatorio * 100 / 7 < 70)
+            {
+                racaMonstro = (Raca) 6;
+            }
+            if (numeroAleatorio * 100 / 7 > 30 )
+            {
+                racaMonstro = (Raca) 1;
+            }
+            if (numeroAleatorio * 100 / 7 > 50)
+            {
+                racaMonstro = (Raca) 2;
+            }
+
+
+
         }
 
         public Monstro()
