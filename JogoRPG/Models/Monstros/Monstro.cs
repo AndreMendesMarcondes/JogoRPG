@@ -1,40 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JogoRPG.Models.Monstros
 {
     public class Monstro : StatusGerais
     {
-        public enum Raca { Orc = 1, Slime = 2, Goblin = 3, Troll = 4, Rato = 5, Dragao = 6 };
+        public enum Raca { Orc = 1, Slime = 2, Goblin = 3, Troll = 4, Rato = 5, Dragao = 6};
 
-        private Raca racaMonstro;
+        private Raca RacaMonstro;
 
-        private void SortearMonstro()
+        public Raca SortearMonstro()
         {
-            Random rd = new Random();
-            int numeroAleatorio = rd.Next(1, 7);
-            racaMonstro = (Raca)numeroAleatorio;
-            if (numeroAleatorio * 100 / 7 < 70)
+            List<int> listaDePesos = new List<int>();
+            listaDePesos.Add(40);//orc
+            listaDePesos.Add(50);//slime
+            listaDePesos.Add(60);//goblin
+            listaDePesos.Add(30);//troll
+            listaDePesos.Add(50);//rato
+            listaDePesos.Add(20);//dragao
+
+            int somaTotalDePesos = listaDePesos.Sum();
+
+            List<int> listaAparecimentoMonstros = new List<int>();
+            int enumDoMonstro = 1;
+
+            foreach (var monstro in listaDePesos)
             {
-                racaMonstro = (Raca) 6;
-            }
-            if (numeroAleatorio * 100 / 7 > 30 )
-            {
-                racaMonstro = (Raca) 1;
-            }
-            if (numeroAleatorio * 100 / 7 > 50)
-            {
-                racaMonstro = (Raca) 2;
+                for (int i = 0; i < monstro; i++)
+                {
+                    listaAparecimentoMonstros.Add(enumDoMonstro);                    
+                }
+                enumDoMonstro++;
             }
 
-
-
+            Random random = new Random();
+            int numeroDoMonstroSorteado = random.Next(0, somaTotalDePesos);
+            return (Raca)listaAparecimentoMonstros[numeroDoMonstroSorteado];
         }
 
         public Monstro()
         {
-            SortearMonstro();
-            Nome = racaMonstro.ToString();
-            switch (racaMonstro)
+            RacaMonstro = SortearMonstro();
+            Nome = RacaMonstro.ToString();
+            switch (RacaMonstro)
             {
                 case Raca.Orc:
                     MontarDadosOrc();
@@ -57,8 +66,6 @@ namespace JogoRPG.Models.Monstros
                     break;
                 default:
                     break;
-
-
             }
         }
 
@@ -102,6 +109,7 @@ namespace JogoRPG.Models.Monstros
             Vida = Dragao.Vida();
             Defesa = Dragao.Defesa();
             Ataque = Dragao.Ataque();
-        }       
+        }
     }
 }
+
